@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h1{background-color: beige; text-align: center;}
+            h2{background-color: rgb(131, 189, 155); text-align: center;}
+            </style></head>
+            <body>
+                <h1>아기사자 블로그에 오신 걸 환영합니다~~~</h1>
+
+            </body>
+</html>
 <br>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% if user.is_authenticated %}
@@ -14,20 +26,48 @@
 </a>
 {%endif%}
 {% if user.is_authenticated %}
-<h4><a href="{% url 'post' %}"><글 작성하러 가기></a></h4>
+<h4><a href="{% url 'post' %}">무엇이든지 물어보세요!</a></h4>
 {% for myapp in myapps.all %}
      <div class="container">
         <a href="{% url 'detail' myapp.id %}">
-            <ins>제목: <em>{{myapp.title}}</em></ins> <!--밑줄&기울이기-->
+            TITLE: {{myapp.title}}
         </a>
-        <p>내용: {{myapp.body}}</p>
+        <p>---{{myapp.body}}</p>
 
         <small class="text-muted">{{myapp.pub_date}}</small>
     </div>
     
 {%endfor%}
  
-{% else %}
-<br> 
-<p>로그인을 하셔야 글작성이 가능한 게시판 입니다.</p>
+{% else %} 
+<p><br>글작성을 위해서는 로그인을 먼저 하셔야합니다.</p>
 {% endif %}
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8">
+</head>
+<body>
+    <br>
+ <h2>간단한 아기사자에 대한 퀴즈~</h2>
+ <br>
+ <p> 세븐틴 중 가장 아기사자의 최애멤버는?</p>
+ <form name="form">
+  <input type="radio" name="kingName" value="v1">민규<br>
+  <input type="radio" name="kingName" value="v2">호시<br>
+  <input type="radio" name="kingName" value="v3">정한<br>
+  <input type="radio" name="kingName" value="v4">승관<br>
+  <input type="button" name="선택" value="정답확인" onclick="myFucntion()">
+ </form>
+ <p id="check"></p>
+ <script type="text/javascript">
+  function myFucntion() {
+   if(form.kingName[1].checked==true) document.getElementById("check").innerHTML="역시 저에 대해 잘 아시는군요. 찡긋";
+   else document.getElementById("check").innerHTML="헐..매우 실망입니다. 다시 공부해오세요.";
+  }
+ </script>
+</body>
+</html>
+ 
